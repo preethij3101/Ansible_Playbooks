@@ -30,18 +30,18 @@ Ansible Home Directory:
 
 Ansible Commands
   1. ansible --version -> To check ansible verison
-  2. ansible all -i <Inventoryfilename> -m ping -> m means modules
-  3. ansible all -i <Inventoryfilename> -a "date" -> a means arugments
+  2. ansible all -i yourInventoryfilename -m ping -> m means modules
+  3. ansible all -i yourInventoryfilename> -a "date" -> a means arugments
   4. ansible all -m ping -> Excute the command without -i
   5. ansible all -m yum -a "name=httpd state=present" -b -> Install apache -b means become root
   6. ansible all -m service -a "name=http state=started" -b -> To start apache
-  7. ansible-playbook <your yaml filename> --syntax-check  -> To check the syntax
-  8. ansible-playbook <your yaml filename> -> To run the playbook
-  9. ansible-galaxy init <rolename> -> To use galaxy for intilaize the role.
+  7. ansible-playbook youryamlfilename --syntax-check  -> To check the syntax
+  8. ansible-playbook youryamlfilename -> To run the playbook
+  9. ansible-galaxy init rolename -> To use galaxy for intilaize the role.
   10. sudo yum install tree -y -> to use see the complicated file or folder will see easily
-  11. ansible -vault encrypt <your yaml filename> -> To encrypt the file
-  12. ansible -vault view <your yaml filename> -> To view the encrypt file using password
-  13. ansibe -vault Edit <your yaml filename> -> To Edit the file using password
-  14. ansible -vault rekey <your yaml filename> -> To change the New Password
-  15. ansible -playbook <your yaml filename> --ask-vault-pass -> To execute the encrypted playbook
-  16. ansible -vault decrypt <your yaml filename> -> To decrypt the Password
+  11. ansible -vault encrypt youryamlfilename -> To encrypt the file
+  12. ansible -vault view youyamfilename -> To view the encrypt file using password
+  13. ansibe -vault Edit youyamfilename -> To Edit the file using password
+  14. ansible -vault rekey youyamfilename -> To change the New Password
+  15. ansible -playbook youyamfilename --ask-vault-pass -> To execute the encrypted playbook
+  16. ansible -vault decrypt youyamfilename -> To decrypt the Password
