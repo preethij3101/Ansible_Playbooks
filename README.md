@@ -35,13 +35,13 @@ Ansible Commands
   4. ansible all -m ping -> Excute the command without -i
   5. ansible all -m yum -a "name=httpd state=present" -b -> Install apache -b means become root
   6. ansible all -m service -a "name=http state=started" -b -> To start apache
-  7. ansible-playbook youryamlfilename --syntax-check  -> To check the syntax
-  8. ansible-playbook youryamlfilename -> To run the playbook
+  7. ansible-playbook yourfile.yml --syntax-check  -> To check the syntax
+  8. ansible-playbook yourfile.yml -> To run the playbook
   9. ansible-galaxy init rolename -> To use galaxy for intilaize the role.
   10. sudo yum install tree -y -> to use see the complicated file or folder will see easily
-  11. ansible -vault encrypt youryamlfilename -> To encrypt the file
-  12. ansible -vault view youyamfilename -> To view the encrypt file using password
-  13. ansibe -vault Edit youyamfilename -> To Edit the file using password
-  14. ansible -vault rekey youyamfilename -> To change the New Password
-  15. ansible -playbook youyamfilename --ask-vault-pass -> To execute the encrypted playbook
-  16. ansible -vault decrypt youyamfilename -> To decrypt the Password
+  11. ansible -vault encrypt yourfile.yml -> To encrypt the file
+  12. ansible -vault view yourfile.yml -> To view the encrypt file using password
+  13. ansibe -vault Edit yourfile.yml -> To Edit the file using password
+  14. ansible -vault rekey yourfile.yml -> To change the New Password
+  15. ansible -playbook yourfile.yml --ask-vault-pass -> To execute the encrypted playbook
+  16. ansible -vault decrypt yourfile.yml -> To decrypt the Password
