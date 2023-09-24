@@ -1,0 +1,44 @@
+- hosts: all
+  remote_user: ec2-user
+  become: true
+  tasks:
+     - name: installing ruby
+       yum:
+         name: ruby
+         state: present
+
+     - name: starting ipl # repo is not there
+       service:
+         name: ipl
+         state: present
+       ignore_errors: yes # if incase some error means will go next plan using ignore
+
+     - name: installing httpd
+       service:
+         name: httpd
+         state: present
+
+     - name: starting httpd
+       service:
+         name: httpd
+         state: started
+
+#LOOP
+- hosts: all
+  remote_user: ec2-user
+  become: true
+  tasks:
+     - name: installing following pkgs
+       yum:
+         name: "{{ item }}"
+         state: present
+       loop:   # using simplify the code 
+         - ruby
+         - ipl
+         - httpd
+       ignore_errors: yes
+
+     - name: starting httpd
+       service:
+         name: httpd
+         state: started         
