@@ -1,0 +1,45 @@
+- hosts: all
+  remote_user: ec2-user
+  become: yes
+  vars:
+    ports: 6969
+  tasks:
+  - name: Installation fo jenkins
+    yum_repository:
+      name: jenkins
+      description: installation of jenkins 
+      baseurl: http://pkg.jenkins.io/redhat-stable
+      gpgkey: http://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+
+  - name: updating yum repository 
+    yum:
+      name: "{{ item }}"
+      state: latest
+    loop:
+      - java
+      - jenkins
+
+  - name: changing jenkins port no
+    lineinfile:
+      path: /usr/lib/systemd/system/jenkins.service
+      regexp: '^Environment="JENKINS_PORT=8080"'
+      line: Environment="JENKINS_PORT={{ports}}"
+    notify: restart jenkins
+
+  - name: daemon-reload to pick up config changes
+    ansible.builtin.systemd:
+      daemon_reload: yes
+  - name: stop
+    service:
+      name: jenkins
+      state: stopped
+
+  - name: Start jenkins
+    ansible.builtin.systemd:
+      name: jenkins
+      state: started
+  handlers:
+  - name: restart jenkins
+    service:
+      name: jenkins
+      state: restarted
