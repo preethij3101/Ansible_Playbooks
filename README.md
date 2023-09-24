@@ -15,8 +15,8 @@ Methodology:
   2. Slave
 
 Ansible Components:
-  1. Adhoc Command - Single Task Exceution - Single Commands.
-  2. Playbook - Multitasking(Yaml) - Active Project - Online - Set of Adhoc Commands.
+  1. Adhoc Command - Single Task Exceution - Single Commands - called Repostory Methods. 
+  2. Playbook - Multitasking(Yaml) - Active Project - Online - Set of Adhoc Commands - called Bootstrap Method.
   3. Valut - Encryption - Security Reason.
   4. Roles - Offline Template - Ansible Galaxy - Set of Playbook.
 
@@ -35,10 +35,13 @@ Ansible Commands
   4. ansible all -m ping -> Excute the command without -i
   5. ansible all -m yum -a "name=httpd state=present" -b -> Install apache -b means become root
   6. ansible all -m service -a "name=http state=started" -b -> To start apache
-  7. ansible-playbook <yaml filename> --syntax-check  -> To check the syntax
-  8. ansible-playbook <yaml filename> -> To run the playbook
+  7. ansible-playbook <your yaml filename> --syntax-check  -> To check the syntax
+  8. ansible-playbook <your yaml filename> -> To run the playbook
   9. ansible-galaxy init <rolename> -> To use galaxy for intilaize the role.
   10. sudo yum install tree -y -> to use see the complicated file or folder will see easily
-  11. ansible -vault encrypt <yaml filename> -> To encrypt the file
-  12. ansible -vault view <yaml filename> -> To view the encrypt file after enter the password
-  13. ansibe -vault
+  11. ansible -vault encrypt <your yaml filename> -> To encrypt the file
+  12. ansible -vault view <your yaml filename> -> To view the encrypt file using password
+  13. ansibe -vault Edit <your yaml filename> -> To Edit the file using password
+  14. ansible -vault rekey <your yaml filename> -> To change the New Password
+  15. ansible -playbook <your yaml filename> --ask-vault-pass -> To execute the encrypted playbook
+  16. ansible -vault decrypt <your yaml filename> -> To decrypt the Password
